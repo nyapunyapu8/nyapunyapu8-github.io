@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ショッピングリスト</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1>ショッピングリスト 🛒</h1>
+
+    <div class="input-group">
+      <select id="category" class="category-select">
+        <option value="食品">🍽️ 食品</option>
+        <option value="日用品">🧼 日用品</option>
+        <option value="衣類">👕 衣類</option>
+        <option value="文房具">📝 文房具</option>
+        <option value="おやつ">🍬 おやつ</option>
+        <option value="飲み物">🥤 飲み物</option>
+      </select>
+
+      <input type="text" id="itemInput" placeholder="商品名を入力してね..." class="item-input">
+      <input type="file" id="imageInput" accept="image/*" class="image-input">
+      <button onclick="addItem()" class="add-button">
+        <span class="material-icons">add_circle</span> 追加するよ！
+      </button>
+      <button onclick="startVoiceInput()" class="voice-button">
+        <span class="material-icons">mic</span> 音声入力
+      </button>
+    </div>
+
+    <div class="help-text">
+      <p>💡 ヒント: 音声入力で商品を追加できるよ！</p>
+    </div>
+
+    <ul id="itemList" class="item-list"></ul>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
